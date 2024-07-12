@@ -7,89 +7,79 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="loader" class="loader"></div>
-
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <img src="logo.png" alt="CloudFly Logo" class="logo">
-            <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
-        </div>
-        <a href="index.html" class="sidebar-link"><img src="home-icon.png" alt="Home" class="icon"> Trang chủ</a>
-        <a href="create-vps.html" class="sidebar-link"><img src="vps-icon.png" alt="Create VPS" class="icon"> Create VPS</a>
-    </div>
-    <div class="main-content">
-        <header>
-            <span class="openbtn" onclick="toggleSidebar()">&#9776;</span>
-        </header>
-        <div class="container">
-            <h1>Select Your VPS Configuration</h1>
-            <form>
-                <label for="package">Select Package:</label>
-                <select id="package" name="package">
-                    <option value="1-1">1-1</option>
-                    <option value="2-2">2-2</option>
-                    <option value="3-3">3-3</option>
-                    <option value="4-4">4-4</option>
-                </select>
-                <br><br>
-
-                <label for="os">Select Operating System:</label>
-                <select id="os" name="os">
-                    <option value="ubuntu-18.04">Ubuntu 18.04</option>
-                    <option value="ubuntu-19.04">Ubuntu 19.04</option>
-                    <option value="ubuntu-20.04">Ubuntu 20.04</option>
-                    <option value="ubuntu-22.04">Ubuntu 22.04</option>
-                    <option value="ubuntu-23.04">Ubuntu 23.04</option>
-                    <option value="centos-7">CentOS 7</option>
-                    <option value="centos-8">CentOS 8</option>
-                    <option value="centos-9">CentOS 9</option>
-                    <option value="kali-linux">Kali Linux</option>
-                    <option value="alma-linux">Alma Linux</option>
-                </select>
-                <br><br>
-
-                <button type="button" id="create-now-btn">Create Now</button>
-            </form>
-        </div>
+    <div id="loader-wrapper">
+        <span class="loader"></span>
     </div>
 
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="loader"></span>
+    <div class="sidebar" id="mySidebar">
+        <div class="logo">
+            <img src="logo.png" alt="CloudFly Logo">
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="index.html"><img src="home-icon.png" alt="Home" style="width:20px;height:20px;"> Trang chủ</a>
+        <a href="create-vps.html" class="active"><img src="vps-icon.png" alt="Create VPS" style="width:20px;height:20px;"> Create VPS</a>
+    </div>
+
+    <button class="openbtn" onclick="openNav()">☰</button>
+
+    <div class="main">
+        <h2>Create a VPS</h2>
+        <form>
+            <label for="package">Package:</label>
+            <select id="package">
+                <option value="1-1">1-1</option>
+                <option value="2-2">2-2</option>
+                <option value="3-3">3-3</option>
+                <option value="4-4">4-4</option>
+            </select>
+            <br>
+            <label for="os">Operating System:</label>
+            <select id="os">
+                <option value="ubuntu-18.04">Ubuntu 18.04</option>
+                <option value="ubuntu-19.04">Ubuntu 19.04</option>
+                <option value="ubuntu-20.04">Ubuntu 20.04</option>
+                <option value="ubuntu-22.04">Ubuntu 22.04</option>
+                <option value="ubuntu-23.04">Ubuntu 23.04</option>
+                <option value="centos-7">CentOS 7</option>
+                <option value="centos-8">CentOS 8</option>
+                <option value="centos-9">CentOS 9</option>
+                <option value="kali-linux">Kali Linux</option>
+                <option value="alma-linux">Alma Linux</option>
+            </select>
+            <br>
+            <button type="button" class="create-btn" onclick="createVPS()">Create Now</button>
+        </form>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <p>VPS created successfully!</p>
+            </div>
         </div>
     </div>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("active");
+        function openNav() {
+            document.getElementById("mySidebar").classList.add("open");
+            document.querySelector(".main").classList.add("shifted");
         }
 
-        document.getElementById('create-now-btn').addEventListener('click', function() {
-            const popup = document.getElementById('popup');
-            popup.innerHTML = `
-                <div class="popup-content">
-                    <span class="loader"></span>
-                </div>
-            `;
-            popup.style.display = 'flex';
+        function closeNav() {
+            document.getElementById("mySidebar").classList.remove("open");
+            document.querySelector(".main").classList.remove("shifted");
+        }
 
-            setTimeout(function() {
-                popup.innerHTML = `
-                    <div class="popup-content">
-                        <p>VPS created successfully!</p>
-                        <button id="close-popup-btn">Close</button>
-                    </div>
-                `;
-                document.getElementById('close-popup-btn').addEventListener('click', function() {
-                    popup.style.display = 'none';
-                    location.reload(); // Reload the page to reset the popup content
-                });
+        function createVPS() {
+            setTimeout(() => {
+                document.getElementById("popup").style.display = "block";
             }, 4000);
-        });
+        }
 
-        window.addEventListener('load', function() {
-            document.getElementById('loader').style.display = 'none';
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        window.addEventListener("load", function() {
+            document.getElementById("loader-wrapper").style.display = "none";
         });
     </script>
 </body>

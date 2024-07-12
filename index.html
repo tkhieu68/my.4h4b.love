@@ -3,42 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake VPS Creation</title>
+    <title>Fake VPS Creator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="loader" class="loader"></div>
-
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <img src="logo.png" alt="CloudFly Logo" class="logo">
-            <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
-        </div>
-        <a href="index.html" class="sidebar-link"><img src="home-icon.png" alt="Home" class="icon"> Trang chủ</a>
-        <a href="create-vps.html" class="sidebar-link"><img src="vps-icon.png" alt="Create VPS" class="icon"> Create VPS</a>
+    <div id="loader-wrapper">
+        <span class="loader"></span>
     </div>
-    <div class="main-content">
-        <header>
-            <span class="openbtn" onclick="toggleSidebar()">&#9776;</span>
-        </header>
-        <div class="container">
-            <h1>Create a Virtual Private Server</h1>
-            <button id="create-vps-btn" class="plus-button">+</button>
+
+    <div class="sidebar" id="mySidebar">
+        <div class="logo">
+            <img src="logo.png" alt="CloudFly Logo">
         </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="index.html" class="active"><img src="home-icon.png" alt="Home" style="width:20px;height:20px;"> Trang chủ</a>
+        <a href="create-vps.html"><img src="vps-icon.png" alt="Create VPS" style="width:20px;height:20px;"> Create VPS</a>
+    </div>
+
+    <button class="openbtn" onclick="openNav()">☰</button>
+
+    <div class="main">
+        <h2>Welcome to Fake VPS Creator</h2>
+        <button class="create-btn" onclick="window.location.href='create-vps.html'">+</button>
     </div>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("active");
+        function openNav() {
+            document.getElementById("mySidebar").classList.add("open");
+            document.querySelector(".main").classList.add("shifted");
         }
 
-        document.getElementById('create-vps-btn').addEventListener('click', function() {
-            window.location.href = 'create-vps.html';
-        });
+        function closeNav() {
+            document.getElementById("mySidebar").classList.remove("open");
+            document.querySelector(".main").classList.remove("shifted");
+        }
 
-        window.addEventListener('load', function() {
-            document.getElementById('loader').style.display = 'none';
+        window.addEventListener("load", function() {
+            document.getElementById("loader-wrapper").style.display = "none";
         });
     </script>
 </body>
