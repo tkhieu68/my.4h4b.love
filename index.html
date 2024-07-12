@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <a href="index.html">Home</a>
-        <a href="create-vps.html">Create VPS</a>
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+        <a href="index.html"><img src="home-icon.png" alt="Home" class="icon"> Home</a>
+        <a href="create-vps.html"><img src="vps-icon.png" alt="Create VPS" class="icon"> Create VPS</a>
     </div>
     <div class="main-content">
         <header>
             <img src="logo.png" alt="Logo" class="logo">
+            <span class="openbtn" onclick="toggleSidebar()">&#9776;</span>
         </header>
         <div class="container">
             <h1>Create a Virtual Private Server</h1>

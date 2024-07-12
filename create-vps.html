@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <a href="index.html">Home</a>
-        <a href="create-vps.html">Create VPS</a>
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+        <a href="index.html"><img src="home-icon.png" alt="Home" class="icon"> Home</a>
+        <a href="create-vps.html"><img src="vps-icon.png" alt="Create VPS" class="icon"> Create VPS</a>
     </div>
     <div class="main-content">
+        <header>
+            <span class="openbtn" onclick="toggleSidebar()">&#9776;</span>
+        </header>
         <div class="container">
             <h1>Select Your VPS Configuration</h1>
             <form>
@@ -46,21 +50,39 @@
 
     <div id="popup" class="popup">
         <div class="popup-content">
-            <p>VPS created successfully!</p>
-            <button id="close-popup-btn">Close</button>
+            <span class="loader"></span>
         </div>
     </div>
 
     <script>
-        document.getElementById('create-now-btn').addEventListener('click', function() {
-            document.getElementById('popup').style.display = 'flex';
-            setTimeout(function() {
-                document.getElementById('popup').style.display = 'none';
-            }, 4000);
-        });
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.querySelector(".main-content");
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+                mainContent.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "250px";
+                mainContent.style.marginLeft = "250px";
+            }
+        }
 
-        document.getElementById('close-popup-btn').addEventListener('click', function() {
-            document.getElementById('popup').style.display = 'none';
+        document.getElementById('create-now-btn').addEventListener('click', function() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'flex';
+
+            setTimeout(function() {
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <p>VPS created successfully!</p>
+                        <button id="close-popup-btn">Close</button>
+                    </div>
+                `;
+                document.getElementById('close-popup-btn').addEventListener('click', function() {
+                    popup.style.display = 'none';
+                    location.reload(); // Reload the page to reset the popup content
+                });
+            }, 4000);
         });
     </script>
 </body>
