@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="loader" class="loader"></div>
+
     <div id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
         <a href="index.html"><img src="home-icon.png" alt="Home" class="icon"> Home</a>
@@ -88,6 +90,10 @@
                     location.reload(); // Reload the page to reset the popup content
                 });
             }, 4000);
+        });
+
+        window.addEventListener('load', function() {
+            document.getElementById('loader').style.display = 'none';
         });
     </script>
 </body>
