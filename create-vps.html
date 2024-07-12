@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create VPS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your VPS Configuration</h1>
+        <form>
+            <label for="package">Select Package:</label>
+            <select id="package" name="package">
+                <option value="1-1">1-1</option>
+                <option value="2-2">2-2</option>
+                <option value="3-3">3-3</option>
+                <option value="4-4">4-4</option>
+            </select>
+            <br><br>
+
+            <label for="os">Select Operating System:</label>
+            <select id="os" name="os">
+                <option value="ubuntu-18.04">Ubuntu 18.04</option>
+                <option value="ubuntu-19.04">Ubuntu 19.04</option>
+                <option value="ubuntu-20.04">Ubuntu 20.04</option>
+                <option value="ubuntu-22.04">Ubuntu 22.04</option>
+                <option value="ubuntu-23.04">Ubuntu 23.04</option>
+                <option value="centos-7">CentOS 7</option>
+                <option value="centos-8">CentOS 8</option>
+                <option value="centos-9">CentOS 9</option>
+                <option value="kali-linux">Kali Linux</option>
+                <option value="alma-linux">Alma Linux</option>
+            </select>
+            <br><br>
+
+            <button type="button" id="create-now-btn">Create Now</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('create-now-btn').addEventListener('click', function() {
+            alert('VPS has been created successfully!');
+        });
+    </script>
+</body>
+</html>
