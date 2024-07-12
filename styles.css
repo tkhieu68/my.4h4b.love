@@ -1,11 +1,45 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 200px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+header {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
 }
 
 .container {
@@ -25,6 +59,13 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+.plus-button {
+    font-size: 40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
 
 .popup {
