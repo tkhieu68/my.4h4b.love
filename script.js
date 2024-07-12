@@ -10,15 +10,13 @@ function toggleSidebar() {
     }
 }
 
-document.getElementById('create-vps-btn').addEventListener('click', function() {
-    const popup = document.createElement('div');
-    popup.className = 'popup';
+document.getElementById('create-now-btn').addEventListener('click', function() {
+    const popup = document.getElementById('popup');
     popup.innerHTML = `
         <div class="popup-content">
             <span class="loader"></span>
         </div>
     `;
-    document.body.appendChild(popup);
     popup.style.display = 'flex';
 
     setTimeout(function() {
@@ -30,7 +28,6 @@ document.getElementById('create-vps-btn').addEventListener('click', function() {
         `;
         document.getElementById('close-popup-btn').addEventListener('click', function() {
             popup.style.display = 'none';
-            document.body.removeChild(popup);
         });
     }, 4000);
 });
