@@ -48,13 +48,19 @@ body {
     padding: 15px 8px 15px 32px;
     text-decoration: none;
     font-size: 18px;
-    color: white;
+    color: #606D81;
     display: block;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
-    background-color: #575757;
+    background-color: #668FCD;
+    color: white;
+}
+
+.sidebar a.active {
+    background-color: #668FCD;
+    color: white;
 }
 
 .sidebar .closebtn {
@@ -139,15 +145,10 @@ button:hover {
 
 #close-popup-btn {
     margin-top: 10px;
-    background-color: #f44336;
-}
-
-#close-popup-btn:hover {
-    background-color: #e53935;
-}
-
-.icon {
-    width: 24px;
-    vertical-align: middle;
-    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
 }
